@@ -1,3 +1,4 @@
+#Design data structure for Binary Search Tree. Write methods for adding node into BST
 class BST:
     class Node:
         def __init__(self,ele):
@@ -12,6 +13,7 @@ class BST:
 
     def geteleCount(self):
         return self.count
+       
 
     def addNode(self,ele):
         cur=parent=self.root
@@ -47,6 +49,8 @@ class BST:
                     cur=cur.right
             return cur!=None
         return False
+        
+#Implement inorder traversal
     def inorder(self):
         if not self.isEmpty():
             self.__inorder__(self.root)
@@ -55,6 +59,8 @@ class BST:
             self.__inorder__(node.left)
             print(node.data)
             self.__inorder__(node.right)
+     
+#Implement preorder traversal
     def preorder(self):
         if not self.isEmpty():
             self.__preorder__(self.root)
@@ -63,6 +69,8 @@ class BST:
             print(node.data)
             self.__preorder__(node.left)
             self.__preorder__(node.right)
+       
+#Implement postorder traversal
     def postorder(self):
         if not self.isEmpty():
             self.__postorder__(self.root)
@@ -71,7 +79,8 @@ class BST:
             self.__postorder__(node.left)
             self.__postorder__(node.right)
             print(node.data)
-
+       
+#Implement level_order traversal
     def level_order(self):
         data=[]
         data.append(self.root)
@@ -86,6 +95,8 @@ class BST:
                 data.append(cur.right)
                 count+=1
             count-=1
+            
+#Write method to find the height of BST
     def height_tree(self):
         return self.__height_tree__(self.root)
     def __height_tree__(self,node):
@@ -94,6 +105,8 @@ class BST:
         left_height=self.__height_tree__(node.left)
         right_height=self.__height_tree__(node.right)
         return max(left_height,right_height)+1
+        
+#Write method to count number of terminal nodes
     def count_terminal(self):
         return self.__count_terminal__(self.root)
     def __count_terminal__(self,node):
@@ -104,6 +117,8 @@ class BST:
         left_terminal=self.__count_terminal__(node.left)
         right_terminal=self.__count_terminal__(node.right)
         return left_terminal+right_terminal
+        
+#Write method to delete specified node from BST
     def deleteNode(self,key):
         return self.__deleteNode__(self.root,key)
     def __deleteNode__(self,node,key):
@@ -129,6 +144,8 @@ class BST:
             return node
         else:
             return(self.__findMin__(node.left))
+            
+#Write method to traverse the BST in descending order
     def traverse_increasing(self):
         return self.__traverse_increasing__(self.root)
     def __traverse_increasing__(self,node):
